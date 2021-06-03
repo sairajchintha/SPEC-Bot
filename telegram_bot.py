@@ -14,8 +14,10 @@ class TelegramBot:
     def parse_webhook_data(self, data):
 
         message = data.get('message')
-        self.chat_id = message['chat']['id']
-        self.incoming_message_text = message['text'].lower()
+        if message.get('chat'):
+            self.chat_id = message.get('chat').get('id')
+        if message.get('text'):
+            self.incoming_message_text = message.get('text').lower()
         #self.first_name = message['from']['first_name']
         #self.last_name = message['from']['last_name']
 
