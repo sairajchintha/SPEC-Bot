@@ -13,7 +13,7 @@ class TelegramBot:
 
     def parse_webhook_data(self, data):
 
-        message = data['message']
+        message = data.get('message')
         self.chat_id = message['chat']['id']
         self.incoming_message_text = message['text'].lower()
         #self.first_name = message['from']['first_name']
